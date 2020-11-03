@@ -57,6 +57,16 @@ minetest.register_tool("chisel_tree:chisel", {
 	end,
 })
 
+--Register craft
+
+minetest.register_craft({
+	output = "chisel_tree:chisel",
+	recipe = {
+		{"", "default:steel_ingot", ""},
+		{"", "group:fence", ""},
+	}
+})
+
 
 
 
