@@ -46,7 +46,8 @@ minetest.register_tool("chisel_tree:chisel", {
 
             local tree = "default:"..n
             if tree==node then
-                minetest.swap_node(pos, {name = "default:stripped_"..n})
+                local old_node = minetest.get_node(pos)
+                minetest.swap_node(pos, {name = "default:stripped_"..n, param2 = old_node.param2})
 		        itemstack:add_wear(65535 / 299) -- 300 uses
 		        return itemstack
             end
