@@ -3,9 +3,8 @@ local trunk_names = {
 	"tree", "jungletree", "aspen_tree", "acacia_tree","pine_tree",
 }
 
--- Register all trees
+-- Register all stripped trees
 for _, name in ipairs(trunk_names) do
-
     minetest.register_node(":default:stripped_"..name, {
 	    description = "Stripped "..name,
 	    tiles = {
@@ -13,12 +12,11 @@ for _, name in ipairs(trunk_names) do
 		    "stripped_"..name.."_top.png",
 		    "stripped_"..name..".png"
 	    },
-	    groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
+	    groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2, not_in_creative_inventory = 1},
 	    sounds = default.node_sound_wood_defaults(),
 	    paramtype2 = "facedir",
 	    on_place = minetest.rotate_node,
     })
-
 end
 
 --Register tool
@@ -58,7 +56,6 @@ minetest.register_tool("chisel_tree:chisel", {
 })
 
 --Register craft
-
 minetest.register_craft({
 	output = "chisel_tree:chisel",
 	recipe = {
