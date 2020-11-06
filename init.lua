@@ -19,6 +19,19 @@ for _, name in ipairs(trunk_names) do
     })
 end
 
+--Register tree bark
+
+minetest.register_craftitem(":default:tree_bark", {
+	description = "Tree bark",
+	inventory_image = "tree_bark.png",
+	groups = {not_in_creative_inventory = 1}
+})
+minetest.register_craft({
+	type = "fuel",
+	recipe = "default:tree_bark",
+	burntime = 15,
+})
+
 --list of axes to override
 local axe_types = {
     "wood", "stone", "bronze", "steel", "mese", "diamond",
@@ -51,6 +64,10 @@ for _, axe_name in ipairs(axe_types) do
                     minetest.swap_node(pos, {name = "default:stripped_"..n, param2 = old_node.param2})
                     itemstack:add_wear(65535 / 299) -- 300 uses
                     return itemstack
+		    --if not minetest.check_player_privs(user, {creative=true}) then  --(It works, but i think that this is not the better way for some reason)
+                        local inv = user:get_inventory()
+                        inv:add_item("main", {name="default:tree_bark"})
+                    --end
                 end
             end
 
