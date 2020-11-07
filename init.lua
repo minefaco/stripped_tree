@@ -1,3 +1,5 @@
+--check if creative for tree bark
+local creative_mode = minetest.settings:get_bool("creative_mode")
 --Register nodes
 local trunk_names = {
 	"tree", "jungletree", "aspen_tree", "acacia_tree", "pine_tree",
@@ -64,11 +66,10 @@ for _, axe_name in ipairs(axe_types) do
                     minetest.swap_node(pos, {name = "default:stripped_"..n, param2 = old_node.param2})
                     itemstack:add_wear(65535 / 299) -- 300 uses
 
-                    --(It works, but i think that this is not the better way for some reason)
-		            --if not minetest.check_player_privs(user, {creative=true}) then
+		    if not creative_mode then
                         local inv = user:get_inventory()
                         inv:add_item("main", {name="default:tree_bark"})
-                    --end
+                    end
                     return itemstack
                 end
             end
