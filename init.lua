@@ -68,7 +68,11 @@ for _, axe_name in ipairs(axe_types) do
 
 		    if not creative_mode then
                         local inv = user:get_inventory()
-                        inv:add_item("main", {name="default:tree_bark"})
+			if inv:room_for_item("main", "default:tree_bark") then
+                        	inv:add_item("main", {name="default:tree_bark"})
+			else
+				--drop item
+			end
                     end
                     return itemstack
                 end
