@@ -71,7 +71,7 @@ for _, axe_name in ipairs(axe_types) do
 			if inv:room_for_item("main", "default:tree_bark") then
                         	inv:add_item("main", {name="default:tree_bark"})
 			else
-				--drop item
+				minetest.add_item(pos, "default:tree_bark")
 			end
                     end
                     return itemstack
