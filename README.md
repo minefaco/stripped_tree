@@ -18,4 +18,4 @@ contributed to by wsor4035
 __Assets__
 
 > "are the textures GPL-3.0 as well?"  
-> "no, but it's free to use and share."
+> "Of course!."
