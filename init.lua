@@ -63,11 +63,13 @@ for _, axe_name in ipairs(axe_types) do
                     local old_node = minetest.get_node(pos)
                     minetest.swap_node(pos, {name = "default:stripped_"..n, param2 = old_node.param2})
                     itemstack:add_wear(65535 / 299) -- 300 uses
-                    return itemstack
-		    --if not minetest.check_player_privs(user, {creative=true}) then  --(It works, but i think that this is not the better way for some reason)
+
+                    --(It works, but i think that this is not the better way for some reason)
+		            --if not minetest.check_player_privs(user, {creative=true}) then
                         local inv = user:get_inventory()
                         inv:add_item("main", {name="default:tree_bark"})
                     --end
+                    return itemstack
                 end
             end
 
