@@ -22,12 +22,12 @@ for _, name in ipairs(trunk_names) do
 end
 
 --Register tree bark
-
 minetest.register_craftitem(":default:tree_bark", {
 	description = "Tree bark",
 	inventory_image = "tree_bark.png",
 	groups = {not_in_creative_inventory = 1}
 })
+--register bark as fuel
 minetest.register_craft({
 	type = "fuel",
 	recipe = "default:tree_bark",
@@ -40,7 +40,6 @@ local axe_types = {
 }
 
 for _, axe_name in ipairs(axe_types) do
-
     minetest.override_item("default:axe_" .. axe_name, {
         on_place = function(itemstack, user, pointed_thing)
 
@@ -66,14 +65,16 @@ for _, axe_name in ipairs(axe_types) do
                     minetest.swap_node(pos, {name = "default:stripped_"..n, param2 = old_node.param2})
                     itemstack:add_wear(65535 / 299) -- 300 uses
 
-		    if not creative_mode then
+		            if not creative_mode then
                         local inv = user:get_inventory()
-			if inv:room_for_item("main", "default:tree_bark") then
-                        	inv:add_item("main", {name="default:tree_bark"})
-			else
-				minetest.add_item(pos, "default:tree_bark")
-			end
+                        --check for room in inv, if not, drop item
+			            if inv:room_for_item("main", "default:tree_bark") then
+                            inv:add_item("main", {name="default:tree_bark"})
+			            else
+				            minetest.add_item(pos, "default:tree_bark")
+			            end
                     end
+
                     return itemstack
                 end
             end
