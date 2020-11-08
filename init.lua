@@ -65,14 +65,14 @@ for _, axe_name in ipairs(axe_types) do
                     minetest.swap_node(pos, {name = "default:stripped_"..n, param2 = old_node.param2})
                     itemstack:add_wear(65535 / 299) -- 300 uses
 
-		            if not creative_mode then
+		    if not creative_mode then
                         local inv = user:get_inventory()
                         --check for room in inv, if not, drop item
-			            if inv:room_for_item("main", "default:tree_bark") then
+			if inv:room_for_item("main", "default:tree_bark") then
                             inv:add_item("main", {name="default:tree_bark"})
-			            else
-				            minetest.add_item(pos, "default:tree_bark")
-			            end
+			else
+			    minetest.add_item(pos, "default:tree_bark")
+			end
                     end
 
                     return itemstack
