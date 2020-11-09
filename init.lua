@@ -25,7 +25,7 @@ end
 minetest.register_craftitem(":default:tree_bark", {
 	description = "Tree bark",
 	inventory_image = "tree_bark.png",
-	groups = {not_in_creative_inventory = 1}
+	groups = {not_in_creative_inventory = 1 wood = 1}
 })
 --register bark as fuel
 minetest.register_craft({
