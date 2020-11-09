@@ -41,28 +41,29 @@ function chisel_tree.register_axes(mod_name,axe_types)
                 end
 
                 local node = minetest.get_node(pos).name
+                local mod_name, node_name = unpack(node:split(":"))
+                local has_stripped = minetest.registered_nodes[mod_name..":".."stripped_"..node_name]
 
-                for _, n in ipairs(trunk_names) do
 
-                    local tree = mod_name..":"..n
-                    if tree==node then
-                        local old_node = minetest.get_node(pos)
-                        minetest.swap_node(pos, {name = mod_name..":".."stripped_"..n, param2 = old_node.param2})
-                        itemstack:add_wear(65535 / 299) -- 300 uses
+                        if has_stripped then
+                            local old_node = minetest.get_node(pos)
+                            minetest.swap_node(pos, {name = mod_name..":".."stripped_"..node_name, param2 = old_node.param2})
+                            itemstack:add_wear(65535 / 299) -- 300 uses
+                            minetest.chat_send_all(mod_name)
+                            minetest.chat_send_all(node_name)
 
-		        if not creative_mode then
-                            local inv = user:get_inventory()
-                            --check for room in inv, if not, drop item
-			    if inv:room_for_item("main", "default:tree_bark") then
-                                inv:add_item("main", {name="default:tree_bark"})
-			    else
-			        minetest.add_item(pos, "default:tree_bark")
-			    end
+		            if not creative_mode then
+                                local inv = user:get_inventory()
+                                --check for room in inv, if not, drop item
+			        if inv:room_for_item("main", "default:tree_bark") then
+                                    inv:add_item("main", {name="default:tree_bark"})
+			        else
+			            minetest.add_item(pos, "default:tree_bark")
+			        end
+                            end
+
+                            return itemstack
                         end
-
-                        return itemstack
-                    end
-                end
 
             end,
         })
@@ -70,7 +71,3 @@ function chisel_tree.register_axes(mod_name,axe_types)
 end
 --register alias to support old tool
 minetest.register_alias("chisel_tree:chisel", "default:axe_steel")
-
-
-
-
