@@ -1,5 +1,5 @@
 chisel_tree = {}
-
+local creative_mode = minetest.settings:get_bool("creative_mode")
 --function to register nodes
 function chisel_tree.register_trunk(mod_name,trunk_names)
     for _, name in ipairs(trunk_names) do
