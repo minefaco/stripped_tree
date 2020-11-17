@@ -1,4 +1,4 @@
-# Minetest Chisel_Tree Mod
+# Minetest Stripped_Tree Mod
 
 Adds stripped tree trunks to minetest.
 
