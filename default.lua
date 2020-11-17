@@ -34,6 +34,5 @@ local axe_types = {
 "axe_diamond",
 }
 
-chisel_tree.trunk_names(trunk_names)
 chisel_tree.register_axes(mod_name,axe_types)
 
