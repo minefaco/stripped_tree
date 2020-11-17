@@ -18,16 +18,11 @@ function chisel_tree.register_trunk(mod_name,trunk_names)
     end
 end
 
-function chisel_tree.trunk_names(trunk_list)
-    trunk_names = trunk_list
-end
-
 --function to override axes
 function chisel_tree.register_axes(mod_name,axe_types)
     for _, axe_name in ipairs(axe_types) do
         minetest.override_item(mod_name..":" .. axe_name, {
             on_place = function(itemstack, user, pointed_thing)
-
                 if pointed_thing.type ~= "node" then
                     return
                 end
