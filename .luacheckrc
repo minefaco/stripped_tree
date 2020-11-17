@@ -19,5 +19,5 @@ read_globals = {
     "default", "sfinv", "creative",
 
     --depends
-    --none in this case/yet
+    "moretrees"
 }
