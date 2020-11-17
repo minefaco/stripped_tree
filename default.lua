@@ -21,7 +21,7 @@ local trunk_names = {
     "pine_tree",
 }
 
-chisel_tree.register_trunk(mod_name,trunk_names)
+stripped_tree.register_trunk(mod_name,trunk_names)
 
 
 --Register axes
@@ -34,5 +34,5 @@ local axe_types = {
 "axe_diamond",
 }
 
-chisel_tree.register_axes(mod_name,axe_types)
+stripped_tree.register_axes(mod_name,axe_types)
 
