@@ -42,7 +42,8 @@ function chisel_tree.register_axes(mod_n,axe_types)
 
                         if has_stripped then
                             local old_node = minetest.get_node(pos)
-                            minetest.swap_node(pos, {name = mod_name..":".."stripped_"..node_name, param2 = old_node.param2})
+				local stripped =mod_name..":".."stripped_"..node_name
+                            minetest.swap_node(pos,{name=stripped,param2=old_node.param2})
                             itemstack:add_wear(65535 / 299) -- 300 uses
 
 		            if not creative_mode then
