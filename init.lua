@@ -1,5 +1,5 @@
 -- get modpath
-local mpath = minetest.get_modpath("chisel_tree")
+local mpath = minetest.get_modpath("stripped_tree")
 
 -- load functions
 dofile(mpath .. "/functions.lua")
