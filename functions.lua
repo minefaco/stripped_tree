@@ -1,7 +1,7 @@
-chisel_tree = {}
+stripped_tree = {}
 local creative_mode = minetest.settings:get_bool("creative_mode")
 --function to register nodes
-function chisel_tree.register_trunk(mod_name,trunk_names)
+function stripped_tree.register_trunk(mod_name,trunk_names)
     for _, name in ipairs(trunk_names) do
         minetest.register_node(":"..mod_name..":stripped_" .. name, {
 	        description = "Stripped "..name,
@@ -19,7 +19,7 @@ function chisel_tree.register_trunk(mod_name,trunk_names)
 end
 
 --function to override axes
-function chisel_tree.register_axes(mod_n,axe_types)
+function stripped_tree.register_axes(mod_n,axe_types)
     for _, axe_name in ipairs(axe_types) do
         minetest.override_item(mod_n..":" .. axe_name, {
             on_place = function(itemstack, user, pointed_thing)
