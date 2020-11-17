@@ -18,5 +18,5 @@ local trunk_names = {
 
 }
 
-chisel_tree.register_trunk(mod_name,trunk_names)
+stripped_tree.register_trunk(mod_name,trunk_names)
 
