@@ -1,10 +1,10 @@
 --Register stripped trees
 local mod_name = "moretrees"
 local trunk_names = {
-    "beech_trunk", 
-    "apple_tree_trunk", 
-    "oak_trunk", 
-    "sequoia_trunk", 
+    "beech_trunk",
+    "apple_tree_trunk",
+    "oak_trunk",
+    "sequoia_trunk",
     "birch_trunk",
     "palm_trunk",
     "date_palm_trunk",
