@@ -11,10 +11,10 @@ dofile(mpath .. "/default.lua")
 if minetest.get_modpath("moretrees") then
     dofile(mpath .. "/moretrees.lua")
 end
---[[
+
 if minetest.get_modpath("ethereal") then
     dofile(mpath .. "/ethereal.lua")
-end]]--
+end
 
 
 
