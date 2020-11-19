@@ -1,6 +1,6 @@
 --Register axes
 local axe_types = {
-  "axe_mitrhil",
+  "axe_mithril",
   "axe_silver",
 }
 
