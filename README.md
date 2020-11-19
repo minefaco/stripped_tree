@@ -13,6 +13,7 @@ Adds stripped tree trunks to minetest.
 __Code__
 
 by minefaco GPLv3.0 (License for code and media)
+
 contributed to by wsor4035
 
 __Assets__
