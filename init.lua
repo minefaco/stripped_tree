@@ -16,5 +16,9 @@ if minetest.get_modpath("ethereal") then
     dofile(mpath .. "/ethereal.lua")
 end
 
+if minetest.get_modpath("moreores") then
+    dofile(mpath .. "/moreores.lua")
+end
+
 
 
