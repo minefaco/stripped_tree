@@ -44,7 +44,7 @@ function stripped_tree.register_axes(mod_n,axe_types)
                             local old_node = minetest.get_node(pos)
 				local stripped =mod_name..":".."stripped_"..node_name
                             minetest.swap_node(pos,{name=stripped,param2=old_node.param2})
-                            itemstack:add_wear(65535 / 299) -- 300 uses
+                            --itemstack:add_wear(65535 / 299) this is not useful at moment.
 
 		            if not creative_mode then
                                 local inv = user:get_inventory()
