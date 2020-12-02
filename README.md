@@ -5,7 +5,7 @@ Adds stripped tree trunks to minetest.
 ## Links 
 
 * [Github](https://github.com/minefaco/chisel_tree)
-* [Contentdb](not avaible yet)
+* [Contentdb](https://content.minetest.net/packages/1faco/stripped_tree/)
 * [forums](https://forum.minetest.net/viewtopic.php?p=383571#p383571)
 
 ## License
