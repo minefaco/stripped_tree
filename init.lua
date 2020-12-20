@@ -46,9 +46,9 @@ if stripped_tree.ENABLE_CHISEL then
 			    return
 		    end
 
-		    local node = minetest.get_node(pos).name
-            	    local mod_name, node_name = unpack(node:split(":"))
-            	    local has_stripped = minetest.registered_nodes[mod_name..":".."stripped_"..node_name]
+				local node = minetest.get_node(pos).name
+				local mod_name, node_name = unpack(node:split(":"))
+				local has_stripped = minetest.registered_nodes[mod_name..":".."stripped_"..node_name]
 
 		    if has_stripped then
                 local stripped = mod_name..":".."stripped_"..node_name
@@ -62,7 +62,6 @@ if stripped_tree.ENABLE_CHISEL then
 			        else
 			            minetest.add_item(pos, "default:tree_bark")
 			        end
-                    
                     itemstack:add_wear(65535 / 299) -- 300 uses
                 end
 
