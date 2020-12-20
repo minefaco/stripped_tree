@@ -1,5 +1,4 @@
---Select between chisel tool or axes.
-stripped_tree.ENABLE_CHISEL = true
+
 
 
 -- get modpath
