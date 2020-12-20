@@ -15,53 +15,60 @@ function stripped_tree.register_trunk(mod_name,trunk_names)
 	        paramtype2 = "facedir",
 	        on_place = minetest.rotate_node,
         })
+
+        minetest.register_craft({
+	    output = mod_name..":"..name,
+	    recipe = {{"","default:tree_bark",""},
+			      {"default:tree_bark",mod_name..":stripped_" .. name,"default:tree_bark"},
+			      {"","default:tree_bark",""}}
+        })
     end
 end
 
 --function to override axes
-function stripped_tree.register_axes(mod_n,axe_types)
-    for _, axe_name in ipairs(axe_types) do
-        minetest.override_item(mod_n..":" .. axe_name, {
-            on_place = function(itemstack, user, pointed_thing)
-                if pointed_thing.type ~= "node" then
-                    return
-                end
+if ENABLE_CHISEL ~= true then
+    function stripped_tree.register_axes(mod_n,axe_types)
+        for _, axe_name in ipairs(axe_types) do
+            minetest.override_item(mod_n..":" .. axe_name, {
+                on_place = function(itemstack, user, pointed_thing)
+                    if pointed_thing.type ~= "node" then
+                        return
+                    end
 
-                local pos = pointed_thing.under
-                local pname = user:get_player_name()
+                    local pos = pointed_thing.under
+                    local pname = user:get_player_name()
 
-                if minetest.is_protected(pos, pname) then
-                    minetest.record_protection_violation(pos, pname)
-                    return
-                end
+                    if minetest.is_protected(pos, pname) then
+                        minetest.record_protection_violation(pos, pname)
+                        return
+                    end
 
-                local node = minetest.get_node(pos).name
-                local mod_name, node_name = unpack(node:split(":"))
-                local has_stripped = minetest.registered_nodes[mod_name..":".."stripped_"..node_name]
+                    local node = minetest.get_node(pos).name
+                    local mod_name, node_name = unpack(node:split(":"))
+                    local has_stripped = minetest.registered_nodes[mod_name..":".."stripped_"..node_name]
 
 
-                        if has_stripped then
-                            local old_node = minetest.get_node(pos)
-				local stripped =mod_name..":".."stripped_"..node_name
-                            minetest.swap_node(pos,{name=stripped,param2=old_node.param2})
-                            --itemstack:add_wear(65535 / 299) this is not useful at moment.
+                            if has_stripped then
+                                local old_node = minetest.get_node(pos)
+				    local stripped =mod_name..":".."stripped_"..node_name
+                                minetest.swap_node(pos,{name=stripped,param2=old_node.param2})
+                                --itemstack:add_wear(65535 / 299) this is not useful at moment.
 
-		            if not creative_mode then
-                                local inv = user:get_inventory()
-                                --check for room in inv, if not, drop item
-			        if inv:room_for_item("main", "default:tree_bark") then
-                                    inv:add_item("main", {name="default:tree_bark"})
-			        else
-			            minetest.add_item(pos, "default:tree_bark")
-			        end
+		                if not creative_mode then
+                                    local inv = user:get_inventory()
+                                    --check for room in inv, if not, drop item
+			            if inv:room_for_item("main", "default:tree_bark") then
+                                        inv:add_item("main", {name="default:tree_bark"})
+			            else
+			                minetest.add_item(pos, "default:tree_bark")
+			            end
+                                end
+
+                                return itemstack
                             end
 
-                            return itemstack
-                        end
-
-            end,
-        })
+                end,
+            })
+        end
     end
 end
---register alias to support old tool
-minetest.register_alias("chisel_tree:chisel", "default:axe_steel")
