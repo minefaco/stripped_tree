@@ -62,7 +62,7 @@ local axe_types = {
 "axe_mese",
 "axe_diamond",
 }
-if not ENABLE_CHISEL then
+if not stripped_tree.ENABLE_CHISEL then
 stripped_tree.register_axes(mod_name,axe_types)
 end
 
