@@ -1,4 +1,7 @@
 stripped_tree = {}
+--Select between chisel tool or axes.
+stripped_tree.ENABLE_CHISEL = true
+
 local creative_mode = minetest.settings:get_bool("creative_mode")
 --function to register nodes
 function stripped_tree.register_trunk(mod_name,trunk_names)
