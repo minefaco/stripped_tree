@@ -26,7 +26,7 @@ function stripped_tree.register_trunk(mod_name,trunk_names)
 end
 
 --function to override axes
-if ENABLE_CHISEL ~= true then
+if stripped_tree.ENABLE_CHISEL ~= true then
     function stripped_tree.register_axes(mod_n,axe_types)
         for _, axe_name in ipairs(axe_types) do
             minetest.override_item(mod_n..":" .. axe_name, {
