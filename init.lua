@@ -1,5 +1,5 @@
 --Select between chisel tool or axes.
-ENABLE_CHISEL = true
+stripped_tree.ENABLE_CHISEL = true
 
 
 -- get modpath
@@ -24,7 +24,7 @@ if minetest.get_modpath("moreores") then
     dofile(mpath .. "/moreores.lua")
 end
 
-if ENABLE_CHISEL then
+if stripped_tree.ENABLE_CHISEL then
 
     minetest.register_tool("stripped_tree:chisel", {
 	    description = "Chisel for tree trunks",
