@@ -42,7 +42,7 @@ minetest.register_node("stripped_tree:chiseling_machine", {
             local mod_name, node_name = unpack(nodename:split(":"))
             local has_stripped = minetest.registered_nodes[mod_name..":".."stripped_"..node_name]
             local dstcount = inv:get_stack("dst",1):get_count()
-            if has_stripped and dstcount < max_stack and dstcount+count<max_stack then
+            if has_stripped and dstcount < max_stack then
                 local stripped =mod_name..":".."stripped_"..node_name
                 inv:add_item("dst", stripped.." "..count)
                 inv:add_item("dst", "default:tree_bark "..count.."")
