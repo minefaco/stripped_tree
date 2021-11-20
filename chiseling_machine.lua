@@ -1,7 +1,7 @@
 local max_stack = tonumber(minetest.settings:get("default_stack_max"))
 --*************************************************************************
 minetest.register_node("stripped_tree:chiseling_machine", {
-    description = "Rightclick me!",
+    description = "Chiseladora para troncos",
     tiles = {"chiseling_machine.png", "chiseling_machine.png", "chiseling_machine_side.png", "chiseling_machine_side.png","chiseling_machine_side.png", "chiseling_machine_side.png"},
     groups = {cracky = 1},
     after_place_node = function(pos, placer)
