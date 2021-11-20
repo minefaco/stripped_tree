@@ -36,8 +36,6 @@ minetest.register_node("stripped_tree:chiseling_machine", {
 	on_metadata_inventory_put = function(pos)
         local meta = minetest.get_meta(pos)
 		local inv = meta:get_inventory()
-		-- start timer function, it will sort out whether furnace can burn or not.
-		minetest.get_node_timer(pos):start(1.0)
             local stack = inv:get_stack("src", 1)
             local nodename = stack:get_name()
             local count = stack:get_count()
@@ -45,7 +43,6 @@ minetest.register_node("stripped_tree:chiseling_machine", {
             local has_stripped = minetest.registered_nodes[mod_name..":".."stripped_"..node_name]
             local dstcount = inv:get_stack("dst",1):get_count()
             if has_stripped and dstcount < max_stack and dstcount+count<max_stack then
-                minetest.chat_send_all(dstcount)
                 local stripped =mod_name..":".."stripped_"..node_name
                 inv:add_item("dst", stripped.." "..count)
                 inv:add_item("dst", "default:tree_bark "..count.."")
@@ -69,22 +66,6 @@ minetest.register_node("stripped_tree:chiseling_machine", {
 		return 0
 	end
 })
-
---[[
-minetest.register_node("stripped_tree:chiseling_machine", {
-	        description = "Chiseling machine for trees",
-	        tiles = {
-		        "chiseling_machine.png"
-	        },
-	        groups = {choppy = 2, oddly_breakable_by_hand = 1},
-	        sounds = default.node_sound_wood_defaults(),
-	        paramtype2 = "facedir",
-	        on_rightclick = function(pos,node,clicker,itemstack)
-            minetest.chat_send_all("todo correcto")
-            formspec(pos)
-            end,
-        })
-]]--
 minetest.register_craft({
 	output = "stripped_tree:chiseling_machine",
 	recipe = {
