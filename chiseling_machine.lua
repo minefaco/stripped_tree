@@ -1,4 +1,4 @@
-local max_stack = tonumber(minetest.settings:get("default_stack_max"))
+local max_stack = tonumber(minetest.settings:get("default_stack_max")) or 99
 --*************************************************************************
 minetest.register_node("stripped_tree:chiseling_machine", {
     description = "Chiseladora para troncos",
