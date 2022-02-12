@@ -48,6 +48,9 @@ if stripped_tree.ENABLE_CHISEL then
 
 				local node = minetest.get_node(pos).name
 				local mod_name, node_name = unpack(node:split(":"))
+                -- before concatenating check for nil
+                if not mod_name then return end
+                if not node_name then return end
 				local has_stripped = minetest.registered_nodes[mod_name..":".."stripped_"..node_name]
 
 		    if has_stripped then
