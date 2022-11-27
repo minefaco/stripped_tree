@@ -1,0 +1,2 @@
+# Choose between using axes or chisels to get the stripped trees
+stripped_tree_enable_chisel    (Enable Chisel)    bool true

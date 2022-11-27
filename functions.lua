@@ -1,6 +1,6 @@
 stripped_tree = {}
 --Select between chisel tool or axes.
-stripped_tree.ENABLE_CHISEL = true
+stripped_tree.ENABLE_CHISEL = core.settings:get_bool"stripped_tree_enable_chisel"
 local creative_mode = minetest.settings:get_bool("creative_mode")
 
 --Function to verify that stripped tree trunk exists
