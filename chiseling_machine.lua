@@ -61,6 +61,13 @@ minetest.register_node("stripped_tree:chiseling_machine", {
 
         print(fields.x)
     end,
+        can_dig = function(pos)
+
+            local meta = minetest.get_meta(pos)
+            local inv = meta:get_inventory()
+            return inv:is_empty("dst") and inv:is_empty("src")
+
+        end,
 
 	allow_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
 		if pos then
