@@ -1,14 +1,15 @@
 local max_stack = tonumber(minetest.settings:get("default_stack_max")) or 99
 --*************************************************************************
+local machine_name = "Chiseling Machine"
 minetest.register_node("stripped_tree:chiseling_machine", {
-    description = "Chiseladora para troncos",
+    description = machine_name,
     tiles = {"chiseling_machine.png", "chiseling_machine.png", "chiseling_machine_side.png", "chiseling_machine_side.png","chiseling_machine_side.png", "chiseling_machine_side.png"},
     groups = {cracky = 1},
     after_place_node = function(pos, placer)
         local meta = minetest.get_meta(pos)
         meta:set_string("formspec",
 	            "size[8,9]"..
-	            "label[0,0;Chiseling Machine]"..
+	            "label[0,0;"..machine_name.."]"..
 	            "image[2,2;1,1;chisel.png]"..
 	            "list[current_name;src;2,1;1,1;]"..
 	            "list[current_name;dst;5,1;2,2;]"..
