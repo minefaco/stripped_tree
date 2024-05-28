@@ -7,27 +7,13 @@ minetest.register_node("stripped_tree:chiseling_machine", {
 
     after_place_node = function(pos, placer)
         local meta = minetest.get_meta(pos)
-        meta:set_string("formspec",
-            "size[8,9]"..
-            "label[0,0;Chiseling Machine]"..
-            "image[2,2;1,1;chisel.png]"..
-            "list[current_name;src;2,1;1,1;]"..
-            "list[current_name;dst;5,1;2,2;]"..
-            "list[current_player;main;0,5;8,4;]"..
-            "listring[current_name;dst]"..
-            "listring[current_player;main]"..
-            "listring[current_name;src]"..
-            "listring[current_player;main]"
-        )
+        meta:set_string("formspec", "size[8,9]label[0,0;Chiseling Machine]image[2,2;1,1;chisel.png]list[current_name;src;2,1;1,1;]list[current_name;dst;5,1;2,2;]list[current_player;main;0,5;8,4;]listring[current_name;dst]listring[current_player;main]listring[current_name;src]listring[current_player;main]")
     end,
 
     on_construct = function(pos)
-        local meta = minetest.get_meta(pos)
-        local inv = meta:get_inventory()
+        local inv = minetest.get_meta(pos):get_inventory()
         inv:set_size("src", 1)
         inv:set_size("dst", 2)
-        meta:set_int("elapsed", 0)
-        meta:set_int("cook_time", 0)
         minetest.get_node_timer(pos):start(1.0)
     end,
 
@@ -51,10 +37,7 @@ minetest.register_node("stripped_tree:chiseling_machine", {
     end,
 
     on_receive_fields = function(pos, formname, fields, sender)
-        if fields.quit then
-            return
-        end
-        -- Aquí puedes manejar los campos del formulario según sea necesario
+        if fields.quit then return end
         print(fields.x)
     end,
 
