@@ -1,13 +1,13 @@
 local max_stack = tonumber(minetest.settings:get("default_stack_max")) or 99
-
+local machine_name = "Chiseling Machine" -- "Chiseladora para troncos"
 minetest.register_node("stripped_tree:chiseling_machine", {
-    description = "Chiseladora para troncos",
+    description = machine_name,
     tiles = {"chiseling_machine.png", "chiseling_machine.png", "chiseling_machine_side.png", "chiseling_machine_side.png","chiseling_machine_side.png", "chiseling_machine_side.png"},
     groups = {cracky = 1},
 
     after_place_node = function(pos, placer)
         local meta = minetest.get_meta(pos)
-        meta:set_string("formspec", "size[8,9]label[0,0;Chiseling Machine]image[2,2;1,1;chisel.png]list[current_name;src;2,1;1,1;]list[current_name;dst;5,1;2,2;]list[current_player;main;0,5;8,4;]listring[current_name;dst]listring[current_player;main]listring[current_name;src]listring[current_player;main]")
+        meta:set_string("formspec", "size[8,9]label[0,0;" .. machine_name .. "]image[2,2;1,1;chisel.png]list[current_name;src;2,1;1,1;]list[current_name;dst;5,1;2,2;]list[current_player;main;0,5;8,4;]listring[current_name;dst]listring[current_player;main]listring[current_name;src]listring[current_player;main]")
     end,
 
     on_construct = function(pos)
@@ -40,6 +40,13 @@ minetest.register_node("stripped_tree:chiseling_machine", {
         if fields.quit then return end
         print(fields.x)
     end,
+        can_dig = function(pos)
+
+            local meta = minetest.get_meta(pos)
+            local inv = meta:get_inventory()
+            return inv:is_empty("dst") and inv:is_empty("src")
+
+        end,
 
     allow_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
         return count
