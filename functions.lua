@@ -1,3 +1,4 @@
+
 stripped_tree = {}
 --Select between chisel tool or axes.
 stripped_tree.ENABLE_CHISEL = core.settings:get_bool"stripped_tree_enable_chisel"
@@ -53,6 +54,13 @@ function stripped_tree.register_trunk(mod_name,trunk_names)
 	    recipe = {{"","default:tree_bark",""},
 			      {"default:tree_bark",mod_name..":stripped_" .. name,"default:tree_bark"},
 			      {"","default:tree_bark",""}}
+        })
+        local tree_name, _suffix = unpack(name:split('tree'))
+        minetest.register_craft({
+	        output = mod_name..":"..tree_name.."wood 4",
+	        recipe = {
+		        {mod_name..":stripped_"..name},
+	        }
         })
     end
 end
